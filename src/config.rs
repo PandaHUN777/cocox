@@ -18,7 +18,7 @@ impl OutputConfig {
 }
 
 pub(crate) fn should_color(is_terminal: bool, no_color: Option<&std::ffi::OsStr>) -> bool {
-    is_terminal && !no_color.is_some_and(|value| !value.is_empty())
+    is_terminal && no_color.is_none_or(|value| value.is_empty())
 }
 
 #[cfg(test)]
